@@ -30,14 +30,14 @@ edit the file `config.json` with the following structure
 ```bash
 /etc/systemd/system/nvidia_fan_control.service
 ```
-
+update WorkingDirectory and set the path to your config file
 ```
 [Unit]
 Description=NVIDIA Fan Control Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/sudo /path/to/your/executable
+ExecStart=/usr/bin/sudo /usr/local/bin/nvidia_fan_control
 WorkingDirectory=/path/to/your/config
 StandardOutput=file:/var/log/nvidia_fan_control.log
 StandardError=file:/var/log/nvidia_fan_control_error.log
@@ -55,6 +55,7 @@ sudo systemctl enable nvidia_fan_control.service
 sudo systemctl start nvidia_fan_control.service
 sudo systemctl status nvidia_fan_control.service
 ```
+
 ### Check Logs
 ```bash
 sudo tail -f /var/log/nvidia_fan_control.log
