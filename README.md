@@ -17,10 +17,10 @@ edit the file `config.json` with the following structure
 {
     "time_to_update": 5,
     "temperature_ranges": [
-      { "min_temperature": 0, "max_temperature": 40, "fan_speed": 30, "hysteresis": 2 },
-      { "min_temperature": 40, "max_temperature": 60, "fan_speed": 40, "hysteresis": 2 },
-      { "min_temperature": 60, "max_temperature": 80, "fan_speed": 70, "hysteresis": 2 },
-      { "min_temperature": 80, "max_temperature": 100, "fan_speed": 100, "hysteresis": 2 },
+      { "min_temperature": 0, "max_temperature": 40, "fan_speed": 30, "hysteresis": 3 },
+      { "min_temperature": 40, "max_temperature": 60, "fan_speed": 40, "hysteresis": 3 },
+      { "min_temperature": 60, "max_temperature": 80, "fan_speed": 70, "hysteresis": 3 },
+      { "min_temperature": 80, "max_temperature": 100, "fan_speed": 100, "hysteresis": 3 },
       { "min_temperature": 100, "max_temperature": 200, "fan_speed": 100, "hysteresis": 0 }
     ]
   }
@@ -28,7 +28,7 @@ edit the file `config.json` with the following structure
 
 ## Service
 ```bash
-/etc/systemd/system/nvidia_fan_control.service
+sudo nano /etc/systemd/system/nvidia_fan_control.service
 ```
 update WorkingDirectory and set the path to your config file
 ```
