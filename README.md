@@ -1,5 +1,10 @@
 # Nvidia Fan Control
-Nvidia Fan Control for linux
+
+A lightweight Linux utility for monitoring GPU temperatures and dynamically controlling NVIDIA GPU fan speeds using NVML.
+
+## Requirements
+- NVIDIA GPUs with NVML support.
+- NVIDIA drivers 520 or higher
 
 ## Build
 ```bash
@@ -60,6 +65,3 @@ sudo systemctl status nvidia_fan_control.service
 ```bash
 sudo tail -f /var/log/nvidia_fan_control.log
 ```
-
-## Drivers
-It works with nvidia drivers 520 or higher

@@ -116,7 +116,7 @@ func main() {
 			// Determine appropriate fan speed
 			newFanSpeed := getFanSpeedForTemperature(tempInt, prevTemps[i], prevFanSpeeds[i], config.TemperatureRanges)
 
-			// Update fan speed if it has changed
+			// Update fan speed only if it has changed
 			if newFanSpeed != prevFanSpeeds[i] {
 				// Set manual fan control policy
 				ret = nvml.DeviceSetFanControlPolicy(device, 0, 1)
@@ -132,10 +132,11 @@ func main() {
 					continue
 				}
 
+				// Log the change
 				log.Printf("Updated GPU %d: Temp=%d°C, Fan Speed=%d%%", i, tempInt, newFanSpeed)
+
+				// Update tracking variables
 				prevFanSpeeds[i] = newFanSpeed
-			} else {
-				log.Printf("GPU %d: Temp=%d°C, Fan Speed=%d%% (unchanged)", i, tempInt, newFanSpeed)
 			}
 
 			// Update the previous temperature
