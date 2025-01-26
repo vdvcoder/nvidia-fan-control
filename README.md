@@ -3,7 +3,7 @@
 A lightweight Linux utility for monitoring GPU temperatures and dynamically controlling NVIDIA GPU fan speeds using NVML.
 
 ## Requirements
-- NVIDIA GPUs with NVML support.
+- NVIDIA GPUs with NVML support
 - NVIDIA drivers 520 or higher
 
 ## Build
