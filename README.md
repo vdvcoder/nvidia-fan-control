@@ -1,19 +1,33 @@
 # Nvidia Fan Control
 
+# Setup for Omarchy 3.1
+
 A lightweight Linux utility for monitoring GPU temperatures and dynamically controlling NVIDIA GPU fan speeds using NVML.
 
 ## Requirements
 - NVIDIA GPUs with NVML support
 - NVIDIA drivers 520 or higher
 
-## Build
+## Download
 ```bash
-go build -o nvidia_fan_control
+cd ~/.config
+
+git clone git@github.com:vdvcoder/nvidia-fan-control.git
+
+```
+
+## Build 
+```bash
+cd ~/.config
+
+cd nvidia-fan-control
+
+go build -o nvidia-fan-control
 ```
 
 ## Installation
 ```bash
-sudo mv nvidia_fan_control /usr/local/bin/
+sudo mv nvidia-fan-control /usr/local/bin/
 ```
 
 ## Configuration
@@ -33,7 +47,7 @@ edit the file `config.json` with the following structure
 
 ## Service
 ```bash
-sudo nano /etc/systemd/system/nvidia_fan_control.service
+sudo nano /etc/systemd/system/nvidia-fan-control.service
 ```
 update WorkingDirectory and set the path to your config file
 ```
@@ -42,8 +56,8 @@ Description=NVIDIA Fan Control Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/sudo /usr/local/bin/nvidia_fan_control
-WorkingDirectory=/path/to/your/config
+ExecStart=/usr/local/bin/nvidia-fan-control
+WorkingDirectory=~/config/nvidia-fan-control
 StandardOutput=file:/var/log/nvidia_fan_control.log
 StandardError=file:/var/log/nvidia_fan_control_error.log
 Restart=always
@@ -56,9 +70,9 @@ WantedBy=multi-user.target
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable nvidia_fan_control.service
-sudo systemctl start nvidia_fan_control.service
-sudo systemctl status nvidia_fan_control.service
+sudo systemctl enable nvidia-fan-control.service
+sudo systemctl start nvidia-fan-control.service
+sudo systemctl status nvidia-fan-control.service
 ```
 
 ### Check Logs
